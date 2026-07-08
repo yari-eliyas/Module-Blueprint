@@ -1,0 +1,12 @@
+<?php
+
+use App\Modules\{{moduleName}}\Controller\{{moduleName}}Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('{{moduleName}}')->group(function () {
+    Route::get('/', [{{moduleName}}Controller::class, 'index'])->name('{{moduleName}}.index');
+    Route::get('/{id}', [{{moduleName}}Controller::class, 'show'])->name('{{moduleName}}.show');
+    Route::post('/', [{{moduleName}}Controller::class, 'store'])->name('{{moduleName}}.store');
+    Route::put('/{id}', [{{moduleName}}Controller::class, 'update'])->name('{{moduleName}}.update');
+    Route::delete('/{id}', [{{moduleName}}Controller::class, 'destroy'])->name('{{moduleName}}.destroy');
+});

@@ -1,0 +1,24 @@
+{
+    "name": "e-yari/module-blueprint",
+    "description": "A custom modular scaffolding package for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "EYari\\ModuleBlueprint\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EYari\\ModuleBlueprint\\ModuleBlueprintServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0|^11.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
