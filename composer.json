@@ -1,6 +1,6 @@
 {
     "name": "e-yari/module-blueprint",
-    "description": "A powerful, lightweight, and customizable modular scaffolding package for Laravel applications",
+    "description": "A custom modular scaffolding package for Laravel",
     "keywords": [
         "laravel",
         "modules",
@@ -18,22 +18,14 @@
         "structure-generator",
         "laravel-scaffold"
     ],
-    "type": "library",
-    "license": "MIT",
     "authors": [
         {
-            "name": "E-Yari",
-            "email": "your-email@example.com",
-            "homepage": "https://github.com/e-yari",
-            "role": "Developer"
+            "name": "Eliyas Yari",
+            "email": "yari.eliyas@email.com"
         }
     ],
-    "support": {
-        "email": "your-email@example.com",
-        "issues": "https://github.com/e-yari/module-blueprint/issues",
-        "source": "https://github.com/e-yari/module-blueprint",
-        "docs": "https://github.com/e-yari/module-blueprint/blob/main/README.md"
-    },
+    "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "EYari\\ModuleBlueprint\\": "src/"
@@ -49,20 +41,5 @@
     "require": {
         "php": "^8.1",
         "laravel/framework": "^10.0|^11.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^8.0|^9.0",
-        "phpunit/phpunit": "^10.0|^11.0"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     }
 }
