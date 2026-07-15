@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Modules\{{moduleName}}\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class {{moduleName}}ServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+  
+        $this->loadViewsFrom(__DIR__.'/../Views', '{{moduleName}}');
+
+
+        $this->loadRoutes();
+    }
+
+    protected function loadRoutes(): void
+    {
+        $routeFile = __DIR__.'/../Router/web.php';
+        if (file_exists($routeFile)) {
+            Route::middleware('web')
+                ->prefix('{{lowerModuleName}}')
+                ->group($routeFile);
+        }
+    }
+}

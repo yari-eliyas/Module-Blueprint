@@ -9,26 +9,26 @@ class {{moduleName}}Controller extends BaseController
 {
     public function index()
     {
-        return view('{{moduleName}}::index');
+        return view('{{moduleName}}::index'); 
     }
 
     public function show($id)
     {
-        // منطق نمایش آیتم
+        return "Show : ".$id;
     }
 
     public function store(Request $request)
     {
-        // منطق ذخیره
+        return "Store : ".$request;
     }
 
     public function update(Request $request, $id)
     {
-        // منطق بروزرسانی
+        return "Update : ".$request;
     }
 
     public function destroy($id)
     {
-        // منطق حذف
+        return "Destroy : ".$request;
     }
 }
