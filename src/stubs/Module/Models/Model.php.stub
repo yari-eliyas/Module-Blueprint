@@ -9,9 +9,9 @@ class {{moduleName}} extends Model
     protected $fillable = [
         'title',
         'description',
-        // فیلدهای دیگر
+        // ....
     ];
 
-    // اگر جدول خاصی مد نظر است:
+    // Table Name
     // protected $table = '{{moduleName}}_table';
 }
