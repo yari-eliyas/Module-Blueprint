@@ -37,7 +37,7 @@ class MakeModuleCommand extends Command
 
         $this->info("✅ Module '{$name}' created successfully!");
         $this->info("📂 Path: {$modulePath}");
-        $this->info("🌐 Url: http://localhost:8000/{$modulePath}");
+        $this->info("🌐 Url: http://localhost:8000/{$name}");
     }
 
     protected function createDirectories(string $modulePath): void
