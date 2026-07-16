@@ -21,7 +21,6 @@ class {{moduleName}}ServiceProvider extends ServiceProvider
         $routeFile = __DIR__.'/../Router/web.php';
         if (file_exists($routeFile)) {
             Route::middleware('web')
-                ->prefix('{{lowerModuleName}}')
                 ->group($routeFile);
         }
     }

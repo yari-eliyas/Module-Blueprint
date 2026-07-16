@@ -1,9 +1,49 @@
-{{-- src/stubs/Module/Views/index.blade.php --}}
-@extends('layouts.app')
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-@section('content')
-    <div class="container">
-        <h1>Welcome to {{ $moduleName }} Module</h1>
-        <p>This is the default view for {{ $moduleName }} module.</p>
-    </div>
-@endsection
+    body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #f1f5f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background: #ffffff;
+        padding: 3rem 4rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        max-width: 500px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #475569;
+        line-height: 1.7;
+    }
+</style>
+
+<div class="container">
+    <h2>Welcome to Module <span id="moduleName"></span></h2>
+    <p>This is the default view for module.</p>
+</div>
+
+<script>
+    const path = window.location.pathname;
+    const moduleName = path.substring(1); 
+    document.getElementById('moduleName').textContent = moduleName;
+</script>
