@@ -58,4 +58,10 @@ No more messy `app/` directories! Keep your codebase **clean**, **scalable**, an
 
 ### Step 1: Require the package via Composer
 ```bash
-composer require e-yari/module-blueprint
+composer require e-yari/module-blueprint 
+
+---
+
+### Step 2: Make Module
+```bash
+php artisan module:make {ModuleName}
