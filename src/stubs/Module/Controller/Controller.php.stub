@@ -9,7 +9,7 @@ class {{moduleName}}Controller extends BaseController
 {
     public function index()
     {
-        return view('{{moduleName}}::index', compact('moduleName'));
+        return view('{{moduleName}}::index');
     }
 
     public function show($id)
