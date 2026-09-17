@@ -2,33 +2,40 @@
 
 namespace App\Modules\{{moduleName}}\Controller;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class {{moduleName}}Controller extends BaseController
 {
-    public function index()
+    public function index(): JsonResponse
     {
-        return view('{{moduleName}}::index');
+        return response()->json([
+            'module' => '{{moduleName}}',
+            'message' => 'Module is working.',
+        ]);
     }
 
-    public function show($id)
+    public function show(int $id): JsonResponse
     {
-        return "Show : ".$id;
+        return response()->json(['id' => $id]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        return "Store : ".$request;
+        return response()->json(['data' => $request->validated() ?? $request->all()]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): JsonResponse
     {
-        return "Update : ".$request;
+        return response()->json([
+            'id' => $id,
+            'data' => $request->validated() ?? $request->all(),
+        ]);
     }
 
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
-        return "Destroy : ".$request;
+        return response()->json(['id' => $id]);
     }
 }
