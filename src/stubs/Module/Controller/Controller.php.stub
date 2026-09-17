@@ -23,14 +23,14 @@ class {{moduleName}}Controller extends BaseController
 
     public function store(Request $request): JsonResponse
     {
-        return response()->json(['data' => $request->validated() ?? $request->all()]);
+        return response()->json(['data' => $request->all()]);
     }
 
     public function update(Request $request, int $id): JsonResponse
     {
         return response()->json([
             'id' => $id,
-            'data' => $request->validated() ?? $request->all(),
+            'data' => $request->all(),
         ]);
     }
 
