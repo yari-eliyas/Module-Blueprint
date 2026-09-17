@@ -13,7 +13,7 @@ class MakeModuleCommand extends Command
         {name : The module name}
         {--force : Overwrite an existing module}';
 
-    protected $description = 'Create a Laravel module with controllers, models, migrations, routes, views, services, validators and a provider';
+    protected $description = 'Create a Laravel module with controllers, models, migrations, routes, views and a service provider';
 
     public function __construct(private readonly Filesystem $files)
     {
@@ -71,36 +71,37 @@ class MakeModuleCommand extends Command
     protected function createFiles(string $modulePath, string $name): void
     {
         $stubPath = __DIR__ . '/../stubs/Module';
-        $lowerName = Str::snake($name);
         $replacements = [
             '{{moduleName}}' => $name,
-            '{{lowerModuleName}}' => $lowerName,
+            '{{lowerModuleName}}' => Str::snake($name),
         ];
 
         $files = [
             "Controller/{$name}Controller.php" => 'Controller/Controller.php.stub',
             "Models/{$name}.php" => 'Models/Model.php.stub',
-            "Migrate/" . date('Y_m_d_His') . "_create_{$lowerName}_table.php" => 'Migrate/Migrate.php.stub',
+            "Migrate/" . date('Y_m_d_His') . "_create_" . Str::snake($name) . "_table.php" => 'Migrate/Migrate.php.stub',
             'Router/web.php' => 'Router/web.php.stub',
             "Providers/{$name}ServiceProvider.php" => 'Providers/ModuleServiceProvider.php.stub',
-            "Views/index.blade.php" => 'Views/index.blade.php.stub',
-            "Services/{$name}Service.php" => 'Services/Service.php.stub',
-            "Validator/{$name}Validator.php" => 'Validator/Validator.php.stub',
-            "Helper/{$name}Helper.php" => 'Helper/Helper.php.stub',
+            'Views/index.blade.php' => 'Views/index.blade.php.stub',
         ];
 
         foreach ($files as $destination => $stub) {
             $stubFile = "{$stubPath}/{$stub}";
+
             if (! $this->files->exists($stubFile)) {
                 throw new RuntimeException("Missing module stub: {$stub}");
             }
 
-            $content = str_replace(array_keys($replacements), array_values($replacements), $this->files->get($stubFile));
             $destinationFile = "{$modulePath}/{$destination}";
-
             if ($this->files->exists($destinationFile) && ! $this->option('force')) {
                 continue;
             }
+
+            $content = str_replace(
+                array_keys($replacements),
+                array_values($replacements),
+                $this->files->get($stubFile)
+            );
 
             $this->files->put($destinationFile, $content);
         }
